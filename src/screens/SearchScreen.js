@@ -4,7 +4,7 @@ import SearchBar from '../components/SearchBar';
 import useResults from '../hooks/useResults';
 import ResultsList from '../components/ResultsList';
 
-const SearchScreen = props => {
+const SearchScreen = () => {
     const [term,setTerm] = useState('');
     const [searchApi, results, errMsg] = useResults();
     const filterResults = (price)=>{
@@ -22,9 +22,12 @@ return results.filter(result => {
             {errMsg ? <Text>{errMsg}</Text> : null}
             {/* <Text>results = {results.length}</Text> */}
             <ScrollView>
-            <ResultsList results={filterResults('$')} title="Cheap"/>
-            <ResultsList results={filterResults('$$')} title="Costly" />
-            <ResultsList results={filterResults('$$')} title="Luxury" />
+            <ResultsList results={filterResults('$')} 
+            title="Cheap"/>
+            <ResultsList results={filterResults('$$')} 
+            title="Costly" />
+            <ResultsList results={filterResults('$$')} 
+            title="Luxury" />
             </ScrollView>
         </View>
     )
